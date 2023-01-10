@@ -1,7 +1,10 @@
+import './home.css'
 const Home = () => {
     return (
         <>
-        Welcome to my pet shop
+            <header>
+                Welcome to my pet shop
+            </header>
         </>
     );
 }

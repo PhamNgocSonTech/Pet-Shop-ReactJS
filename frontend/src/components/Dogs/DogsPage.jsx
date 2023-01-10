@@ -1,7 +1,10 @@
-const DogsPage = () => {
+const DogsPage = (props) => {
+    const {allDogs} = props;
     return (  
         <>
-            Here's all my dogs
+            <section className="dogs-constainer">
+            
+            </section>
         </>
     );
 }
