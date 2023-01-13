@@ -11,6 +11,7 @@ import {CartContext} from './Context/CartContext'
 function App() {
   const [allDogs, setAllDogs] = useState([])
   const [myCart, addToCart] = useState([{}])
+  const [total, setTotal] = useState(0)
 
   useEffect(() => {
   async function getData(){
@@ -21,7 +22,7 @@ function App() {
     getData().catch((err)=> console.log(err))
   }, [])
   return (
-    <CartContext.Provider value={{myCart, addToCart}}>
+    <CartContext.Provider value={{myCart, addToCart, total, setTotal}}>
       <Router>
         <NavBar/>
           <div className="page-container">

@@ -1,10 +1,21 @@
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import './dogs.css'
-const DogsCard = (props) => {
+import {CartContext} from '../../Context/CartContext'
+const DogsCart = (props) => {
     const {id, name, breed, description, price, imageUrl} = props;
+    const {addToCart, setTotal} = useContext(CartContext)
     const [isAdded, setAdded] = useState(false);
     const handleClick=()=>{
         setAdded(true)
+        const newItems = {
+            name: name,
+            price: price,
+            imageUrl: imageUrl
+        }
+        addToCart((item) => [...item, newItems])
+        setTotal((total)=>(total += Number(price)))
+
+        
     }
     return ( 
         <>
@@ -18,7 +29,7 @@ const DogsCard = (props) => {
             </div>
             <div className="dogs-desc">{description}</div>
             <div className="dogs-price">${price}</div>
-            {(isAdded == true)
+            {(isAdded)
                 ? 
                 <button className="dogs-btn-disabled">ADDED</button>
                 : 
@@ -31,4 +42,4 @@ const DogsCard = (props) => {
      );
 }
  
-export default DogsCard;
+export default DogsCart;
